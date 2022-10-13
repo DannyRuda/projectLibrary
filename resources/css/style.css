@@ -4,18 +4,16 @@ body {
 }
 h1 {
     font-family: poppins, sans-serif;
-    font-size: 25px;
+    font-size: 35px;
     font-weight: 600;
 }
 
 .header img {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
 }
 
-h1,.header img {
-    
-}
+
 /* Header Styling */
 
 header {
@@ -31,5 +29,35 @@ header {
     margin:0 auto;
     align-items: center;
     justify-content: space-between;
+    padding: 10px;
 }
 
+/*addBook styling*/
+h2 {
+    font-family: poppins;
+    font-size: 20px;
+    display: inline-block;
+    padding: 5px 5px;
+    font-weight: 600;
+}
+
+.addBook img {
+    display: inline-block;
+}
+
+.addBook button {
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 0 auto;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+    width:11%;
+    box-shadow: 0px 1px 5px grey;
+}
+
+.addBook {
+    margin-top:50px;
+    width: 100%;
+}
