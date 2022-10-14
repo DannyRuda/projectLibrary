@@ -57,6 +57,16 @@ h2 {
     box-shadow: 0px 1px 5px grey;
 }
 
+.addBook button:hover {
+    background-color: rgba(255, 228, 196, 0.815);
+    box-shadow: 0px 6px 5px  grey;
+    cursor: pointer;
+}
+
+.addBook button:active {
+    box-shadow: 0px 2px 5px grey;
+}
+
 .addBook {
     margin-top:50px;
     width: 100%;
@@ -108,4 +118,60 @@ h2 {
 
 .book .lastButton {
     margin: 5px auto 15px;
+}
+
+/*Book form styling*/
+
+.bookForm {
+    background-color: #f0eef1;
+    border: 1px solid grey;
+    border-radius: 15px;
+    width: 20%;
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%) scale(1);
+    margin: 0px auto;
+    
+}
+
+form {
+    margin: 0 auto;
+    width:90%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+    font-family: poppins;
+}
+
+form h2 {
+    padding:10px;
+}
+
+input {
+    display:block;
+    padding: 10px;
+    font-family: inherit;
+    border:none;
+    background-color: white;
+    font-weight: 600;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.read {
+    display:inline-block;
+    padding: 10px;
+    font-weight: 600;
+}
+
+.hide {
+    display: none;
+}
+
+.submit {
+    margin-bottom: 20px;
 }
