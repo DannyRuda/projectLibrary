@@ -13,8 +13,18 @@ function changeReadStatus () {
 }
 
 function getFormData() {
-    return new FormData(document.querySelector('form'));
+    let formData = new FormData(document.querySelector('form'));
+    let formDataArray = [];
+    for (let i of formData.entries()) {
+        if (i[0] !== 'read') {
+            formDataArray.push(i[1]);
+        }
+    }
+    formDataArray.push(document.querySelector('#read').checked)
+    console.log(formDataArray);
+    return formDataArray;
 }
+document.getElementsByTagName
 
 function addBooktoHtml(book) {
     let htmlBook = document.createElement('div');
@@ -37,10 +47,9 @@ function addBooktoHtml(book) {
 let bookIndexNumber = 1;
 function addBook(event) {
     event.preventDefault();
-    console.log('enters addBook')
-    let formData = getFormData();
-    console.log('enters addBook')
-    let book = new Book(formData.title, formData.author, formData.pages, formData.read, bookIndexNumber);
+    let formDataArray = getFormData();
+    let book = new Book(...formDataArray, bookIndexNumber);
+    console.log(book);
     bookIndexNumber++;
     bookArray.push(book);
     addBooktoHtml(book);
