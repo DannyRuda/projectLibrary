@@ -45,6 +45,7 @@ function addBooktoHtml(book) {
 }
 
 let bookIndexNumber = 1;
+
 function addBook(event) {
     event.preventDefault();
     let formDataArray = getFormData();
@@ -53,6 +54,12 @@ function addBook(event) {
     bookIndexNumber++;
     bookArray.push(book);
     addBooktoHtml(book);
+    newBookForm.classList.add('hide');
+    resetFormValues();
+}
+
+function resetFormValues() {
+    document.querySelector('form').reset();
 }
 
 Book.prototype.changeReadStatus = changeReadStatus;
