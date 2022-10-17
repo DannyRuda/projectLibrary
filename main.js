@@ -1,4 +1,22 @@
-let bookArray = [];
+let bookArray = [ {title: 'Harry Potter and the Philosophers Stone',
+                   author: 'J.K. Rowling',
+                   pages: '336',
+                   read: false,
+                   _number: 0},
+
+                  {title: 'A Tale of Two Citys',
+                   author: 'Charles Dickens',
+                   pages: '544',
+                   read: true
+                  }];
+
+function displaySavedBooks(bookArray) {
+    for (let book of bookArray) {
+        addBooktoHtml(book);
+    }
+}
+
+displaySavedBooks(bookArray);
 
 function Book(title, author, pages, read, number) {
     this.title = title;
@@ -24,12 +42,12 @@ function getFormData() {
     console.log(formDataArray);
     return formDataArray;
 }
-document.getElementsByTagName
+
 
 function addBooktoHtml(book) {
     let htmlBook = document.createElement('div');
     htmlBook.classList.add('book');
-    htmlBook.setAttribute('data-BookIndexNumber',book.bookIndexNumber);
+    htmlBook.setAttribute('data-Book-index-number',book.bookIndexNumber);
     let bookTitle = document.createElement('h1');
     let bookAuthor = document.createElement('h2');
     let bookPages = document.createElement('h2');
@@ -40,11 +58,14 @@ function addBooktoHtml(book) {
     bookPages.innerText = book.pages;
     bookReadStatus.innerText = book.read ? 'read' : 'not read';
     bookRemove.innerText = 'Remove';
-    htmlBook.append(bookTitle,bookAuthor,bookPages,bookReadStatus,bookRemove)
+    bookRemove.classList.add('lastButton', 'remove');
+    bookRemove.addEventListener('click', removeBook);
+    htmlBook.append(bookTitle,bookAuthor,bookPages,bookReadStatus,bookRemove);
     document.querySelector('.books').append(htmlBook);
 }
 
-let bookIndexNumber = 1;
+//bookIndexNumber will count like array indexes, starting from 0
+let bookIndexNumber = bookArray.length;
 
 function addBook(event) {
     event.preventDefault();
@@ -62,6 +83,17 @@ function resetFormValues() {
     document.querySelector('form').reset();
 }
 
+function removeBook(event) {
+    let bookIdent = event.target.parentElement.dataset.bookIndexNumber;
+    event.target.parentElement.remove();
+    for (book of bookArray) {
+        if(book.bookIndexNumber === bookIdent) {
+            bookArray.splice(bookArray.indexOf(book));
+        }
+    }
+    bookArray.splice(bookArray.indexOf('bookIdent'))
+}
+
 Book.prototype.changeReadStatus = changeReadStatus;
 
 let buttonAddBook = document.querySelector('.addBook button');
@@ -75,3 +107,9 @@ buttonAddBook.addEventListener('click', buttonClicked);
 
 let submitButton = document.querySelector('.submit');
 submitButton.addEventListener('click', addBook);
+
+let removeButtonArray = [...document.getElementsByClassName('remove')];
+
+for (let removeButton of removeButtonArray) {
+    removeButton.addEventListener('click', removeBook);
+}
