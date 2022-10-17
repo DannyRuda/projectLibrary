@@ -7,7 +7,8 @@ let bookArray = [ {title: 'Harry Potter and the Philosophers Stone',
                   {title: 'A Tale of Two Citys',
                    author: 'Charles Dickens',
                    pages: '544',
-                   read: true
+                   read: true,
+                   _number: 1
                   }];
 
 function displaySavedBooks(bookArray) {
@@ -47,7 +48,7 @@ function getFormData() {
 function addBooktoHtml(book) {
     let htmlBook = document.createElement('div');
     htmlBook.classList.add('book');
-    htmlBook.setAttribute('data-Book-index-number',book.bookIndexNumber);
+    htmlBook.setAttribute('data-Book-index-number',book._number);
     let bookTitle = document.createElement('h1');
     let bookAuthor = document.createElement('h2');
     let bookPages = document.createElement('h2');
