@@ -118,6 +118,7 @@ h2 {
 
 .book .lastButton {
     margin: 5px auto 15px;
+    background-color: rgb(255, 72, 72);
 }
 
 /*Book form styling*/
