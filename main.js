@@ -82,12 +82,16 @@ let bookIndexNumber = bookArray.length;
 function addBook(event) {
     event.preventDefault();
     let formDataArray = getFormData();
-    let book = new Book(...formDataArray, bookIndexNumber);
+    if(formDataArray[0] && formDataArray[1] && formDataArray[2]) {
+        let book = new Book(...formDataArray, bookIndexNumber);
     bookIndexNumber++;
     bookArray.push(book);
     addBooktoHtml(book);
     newBookForm.classList.add('hide');
     resetFormValues();
+    } else {
+        alert('Please enter a book title, an author and the number of pages');
+    }
 }
 
 function resetFormValues() {
@@ -143,3 +147,4 @@ function changeReadStatus(event) {
     event.target.innerText = bookArray[bookIdent].read ? 'not read' : 'read';
     bookArray[bookIdent].changeReadPropertyValue(); 
 }
+
