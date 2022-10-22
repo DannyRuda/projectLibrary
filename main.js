@@ -82,7 +82,7 @@ let bookIndexNumber = bookArray.length;
 function addBook(event) {
     event.preventDefault();
     let formDataArray = getFormData();
-    if(formDataArray[0] && formDataArray[1] && formDataArray[2]) {
+    if(formDataArray[0] && formDataArray[1] && formDataArray[2] > 0) {
         let book = new Book(...formDataArray, bookIndexNumber);
     bookIndexNumber++;
     bookArray.push(book);
@@ -90,8 +90,10 @@ function addBook(event) {
     newBookForm.classList.add('hide');
     formBackground.classList.add('hide');
     resetFormValues();
-    } else {
+    } else if(formDataArray[2] > 0){
         alert('Please enter a book title, an author and the number of pages');
+    } else {
+        alert('Please enter a book title, an author and a positive number of pages');
     }
 }
 
