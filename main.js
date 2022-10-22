@@ -88,6 +88,7 @@ function addBook(event) {
     bookArray.push(book);
     addBooktoHtml(book);
     newBookForm.classList.add('hide');
+    formBackground.classList.add('hide');
     resetFormValues();
     } else {
         alert('Please enter a book title, an author and the number of pages');
@@ -113,10 +114,12 @@ function removeBook(event) {
 //creates variables representing the addBook button and the form
 let buttonAddBook = document.querySelector('.addBook button');
 let newBookForm = document.querySelector('.bookForm');
+let formBackground = document.querySelector('.formBackground');
 
 // shows the form 
 function buttonClicked() {
     newBookForm.classList.remove('hide');
+    formBackground.classList.remove('hide');
 }
 
 
@@ -148,3 +151,12 @@ function changeReadStatus(event) {
     bookArray[bookIdent].changeReadPropertyValue(); 
 }
 
+function closeForm() {
+    newBookForm.classList.add('hide');
+    formBackground.classList.add('hide');
+    resetFormValues();
+}
+
+formBackground.addEventListener('click', closeForm);
+newBookForm.addEventListener('mouseover',()=>{formBackground.removeEventListener('click',closeForm)});
+newBookForm.addEventListener('mouseleave',()=>{formBackground.addEventListener('click', closeForm)});
