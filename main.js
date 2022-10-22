@@ -63,7 +63,7 @@ function addBooktoHtml(book) {
     let bookRemove = document.createElement('button');
     bookTitle.innerText = book.title;
     bookAuthor.innerText = book.author;
-    bookPages.innerText = book.pages;
+    bookPages.innerText = `Pages: ${book.pages}`;
     bookReadStatus.innerText = book.read ? 'read' : 'not read';
     bookReadStatus.addEventListener('click',changeReadStatus);
     bookRemove.innerText = 'Remove';
