@@ -105,6 +105,10 @@ h2 {
     width:80%;
 }
 
+.book button:hover {
+    cursor:pointer;
+}
+
 .book h1 {
     margin: 20px 10px;
     font-size: 22px;
@@ -119,6 +123,11 @@ h2 {
 .book .lastButton {
     margin: 5px auto 15px;
     background-color: rgb(255, 72, 72);
+}
+
+.book .lastButton:hover {
+    cursor:pointer;
+
 }
 
 /*Book form styling*/
