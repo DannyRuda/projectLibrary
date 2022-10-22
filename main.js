@@ -99,16 +99,18 @@ function resetFormValues() {
     document.querySelector('form').reset();
 }
 
-// removes book from bookArray and book card from the website
+// removes book from bookArray and book card from the website and updates bookIndexNumber of html book divs as well as global bookIndexNumer 
 function removeBook(event) {
     let bookIdent = event.target.parentElement.dataset.bookIndexNumber;
+
     event.target.parentElement.remove();
-    for (book of bookArray) {
-        if(book.bookIndexNumber === bookIdent) {
-            bookArray.splice(bookArray.indexOf(book));
+    for (let book of bookArray) {
+        if(book._number == bookIdent) {
+            console.log('remove book');
+            bookArray.splice(bookArray.indexOf(book),1);
         }
     }
-    bookArray.splice(bookArray.indexOf('bookIdent'))
+    adaptBookElementIndex(bookIdent);
 }
 
 //creates variables representing the addBook button and the form
@@ -149,6 +151,19 @@ function changeReadStatus(event) {
     let bookIdent = event.target.parentElement.dataset.bookIndexNumber;
     event.target.innerText = bookArray[bookIdent].read ? 'not read' : 'read';
     bookArray[bookIdent].changeReadPropertyValue(); 
+}
+
+// when removing a book object from the bookArray, the position of the books after the removed
+// one in the array change but the bookIndexNumber property value of the html elements corresponding
+// to the book objects need to be updated as well as the global bookIndexNumber variable
+// funcion reduces bookIndexNumber value of each html book div after the removed book div
+function adaptBookElementIndex(index) {
+    let bookList = document.querySelector('.books').childNodes;
+    // bookIndex = index + 1  because first element of childNodes is a text instead of a book div which needs to be skipped
+    for (let bookIndex = Number(index)+1; bookIndex < bookList.length; bookIndex++) {
+        bookList[Number(bookIndex)].dataset.bookIndexNumber--;
+    }
+    bookIndexNumber--;
 }
 
 function closeForm() {
