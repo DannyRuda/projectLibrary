@@ -1,18 +1,5 @@
 // bookArray stores all book objects that will be created  
-let bookArray = [ {title: 'Harry Potter and the Philosophers Stone',
-                   author: 'J.K. Rowling',
-                   pages: '336',
-                   read: false,
-                   _number: 0,
-                   changeReadPropertyValue: changeReadPropertyValue},
-
-                  {title: 'A Tale of Two Citys',
-                   author: 'Charles Dickens',
-                   pages: '544',
-                   read: true,
-                   _number: 1,
-                   changeReadPropertyValue: changeReadPropertyValue
-                  }];
+let bookArray = [];
 
 
 
